@@ -34,6 +34,6 @@ jobs:
           make -j cli
       - name: Debug
         run: |
-          ls /usr/bin/keepassxc-cli
-          ls /usr/local/bin/keepassxc-cli
+          ls /usr/bin/keepassxc-cli || true
+          ls /usr/local/bin/keepassxc-cli || true
           find src/cli
