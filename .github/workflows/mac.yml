@@ -1,0 +1,19 @@
+name: Mac
+on:
+  push
+jobs:
+  build:
+    runs-on: macOS-10.13
+    steps:
+      - name: Build
+        run: |
+          mkdir -p build
+          cd build
+          cmake \
+            -DCMAKE_OSX_ARCHITECTURES=x86_64 \
+            -DWITH_XC_ALL=OFF \
+            -DWITH_XC_UPDATECHECK=OFF \
+            -DWITH_TESTS=OFF \
+            -DWITH_APP_BUNDLE=OFF \
+            -DKEEPASSXC_BUILD_TYPE=Release
+          make -j cli
