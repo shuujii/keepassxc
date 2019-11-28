@@ -32,6 +32,8 @@ jobs:
             -DWITH_APP_BUNDLE=OFF \
             -DKEEPASSXC_BUILD_TYPE=Release
           make -j cli
+          mkdir local
+          make DESTDIR=$PWD/local install
       - name: Debug
         run: |
           find src/cli
