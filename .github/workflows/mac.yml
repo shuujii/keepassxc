@@ -8,7 +8,9 @@ jobs:
       - name: Cache Homebrew
         uses: actions/cache@v1
         id: cache-brew
-        path: cache-brew
+        with:
+          path: cache-brew
+          key: cache-brew
       - name: Install packages with Homebrew
         if: steps.cache-brew.outputs.cache-hit != 'true'
         run: |
