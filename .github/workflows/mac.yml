@@ -5,11 +5,16 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
+      - name: Install packages with Homebrew
+        run: |
+          brew update
+          brew install qt libgcrypt libsodium argon2
+          brew link qt
       - name: Checkout
         uses: actions/checkout@v1
         with:
           fetch-depth: 1
-          ref: mac-el-capitan
+#          ref: mac-el-capitan
       - name: Build
         run: |
           cmake \
