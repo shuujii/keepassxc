@@ -34,6 +34,7 @@ jobs:
 #          mkdir local
 #          make DESTDIR=$PWD/local install
       - name: Upload keepassxc-cli
+        uses: actions/upload-artifact@v1
         with:
           name: keepassxc-cli
           path: src/cli/keepassxc-cli
