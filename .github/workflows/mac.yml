@@ -11,17 +11,17 @@ jobs:
         with:
           path: cache-brew
           key: cache-brew
-      - name: Install packages with Homebrew
-        if: steps.cache-brew.outputs.cache-hit != 'true'
-        run: |
-          brew update
-          brew install qt libgcrypt libsodium argon2 tree
-          brew link qt
-          mkdir cache-brew
       - name: Checkout
         uses: actions/checkout@v1
         with:
           fetch-depth: 1
+      - name: Install packages with Homebrew
+        if: steps.cache-brew.outputs.cache-hit != 'true'
+        run: |
+          brew update
+          brew install qt libgcrypt libsodium argon2
+          brew link qt
+          mkdir cache-brew
       - name: Build
         run: |
           cmake \
@@ -34,4 +34,4 @@ jobs:
           make -j cli
       - name: Debug
         run: |
-          tree -aAn src/cli
+          find src/cli
