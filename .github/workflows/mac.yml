@@ -5,23 +5,22 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-      - name: Cache Homebrew
-        uses: actions/cache@v1
-        id: cache-brew
-        with:
-          path: cache-brew
-          key: cache-brew
+#      - name: Cache Homebrew
+#        uses: actions/cache@v1
+#        id: cache-brew
+#        with:
+#          path: cache-brew
+#          key: cache-brew
       - name: Checkout
         uses: actions/checkout@v1
         with:
           fetch-depth: 1
       - name: Install packages with Homebrew
-        if: steps.cache-brew.outputs.cache-hit != 'true'
+#        if: steps.cache-brew.outputs.cache-hit != 'true'
         run: |
           brew update
           brew install qt libgcrypt libsodium argon2
           brew link qt
-          mkdir cache-brew
       - name: Build
         run: |
           cmake \
