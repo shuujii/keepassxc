@@ -30,11 +30,15 @@ jobs:
             -DWITH_TESTS=OFF \
             -DWITH_APP_BUNDLE=OFF \
             -DKEEPASSXC_BUILD_TYPE=Release
-          make -j cli
-          mkdir local
-          make DESTDIR=$PWD/local install
+          make -j keepassxc-cli
+#          mkdir local
+#          make DESTDIR=$PWD/local install
+      - name: Upload keepassxc-cli
+        with:
+          name: keepassxc-cli
+          path: src/cli/keepassxc-cli
       - name: Debug
         run: |
           find src/cli
-          ls /usr/local/bin/keepassxc-cli || true
-          ls /usr/bin/keepassxc-cli || true
+#          ls /usr/local/bin/keepassxc-cli || true
+#          ls /usr/bin/keepassxc-cli || true
